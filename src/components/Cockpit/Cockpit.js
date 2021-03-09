@@ -1,10 +1,22 @@
+import classes from './Cockpit.module.css';
+
 const Cockpit = props => {
+    let textClasses = [];
+
+    if (props.persons.length === 3) textClasses = [classes.bold, classes.triple];
+    else if (props.persons.length === 2) textClasses = [classes.bold, classes.italic, classes.double];
+    else if (props.persons.length === 1) textClasses = [classes.bold, classes.single];
+    else textClasses = [classes.text];
+
+    let toggleClasses = [classes.toggler];
+    if (props.visible) toggleClasses.push(classes.red);
+
     return (
         <div>
             <h1 style={{ color: 'aqua' }}>A React App created with Components</h1>
             <p className={textClasses.join(' ')} style={{ fontSize: 18 }}>Just some text, nothing more</p>
-            <div style={{ marginBottom: 10 }} onClick={this.resetPersons}><button className={classes.btn}>Reset</button></div>
-            <div><button className={toggleClasses.join(' ')} onClick={this.togglePersons}>Toggle Persons</button></div>
+            <div style={{ marginBottom: 10 }} onClick={props.resetPersons}><button className={classes.btn}>Reset</button></div>
+            <div><button onClick={props.togglePersons} className={toggleClasses.join(' ')}>Toggle Persons</button></div>
         </div>
     );
 }

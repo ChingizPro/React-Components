@@ -2,69 +2,6 @@
     text-align: center;
 }
 
-.btn {
-    display: inline-block;
-    padding: 3px 8px;
-    padding-top: 4px;
-    border-radius: 3px;
-    background-color: rgb(253, 180, 45);
-    border-color: rgb(236, 157, 10);
-    transition: 100ms transform linear;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-.toggler {
-    border-radius: 4px;
-    color: #fff;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 5px;
-    padding-bottom: 4px;
-    border: 1px solid #ccc;
-    background-color: #090;
-}
-
-.toggler:hover {
-    color: #060;
-    background-color: #0e0;
-}
-
-.toggler.red {
-    background-color: #a00;
-}
-
-.toggler.red:hover {
-    color: #400;
-    background-color: #f00;
-}
-
-.italic {
-    font-style: italic;
-}
-
-.triple {
-    color: purple;
-}
-
-.double {
-    color: yellowgreen;
-}
-
-.single {
-    color: rgb(23, 111, 226);
-}
-
-.bold {
-    font-weight: bold;
-}
-
-.text {
-    color: teal;
-}
-
 @media (max-width: 800px) {
     .btn {
         color: #fff;

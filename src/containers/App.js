@@ -53,7 +53,6 @@ class App extends Component {
 
   render() {
     let persons = null;
-    let toggleClasses = [classes.toggler];
 
     if (this.state.personsVisible) {
       persons = (
@@ -61,21 +60,11 @@ class App extends Component {
           <Persons persons={this.state.persons} clicked={this.deletePerson} changed={this.inputChangeHandler} />
         </div>
       );
-
-      toggleClasses.push(classes.red);
     }
-
-    // * const hideButtonStyles = { ...styles, marginRight: 7 };
-    let textClasses = [];
-
-    if (this.state.persons.length === 3) textClasses = [classes.bold, classes.triple];
-    else if (this.state.persons.length === 2) textClasses = [classes.bold, classes.italic, classes.double];
-    else if (this.state.persons.length === 1) textClasses = [classes.bold, classes.single];
-    else textClasses = [classes.text];
 
     return (
       <div className={classes.App}>
-        <Cockpit />
+        <Cockpit persons={this.state.persons} visible={this.state.personsVisible} resetPersons={this.resetPersons} togglePersons={this.togglePersons} />
         {persons}
       </div>
     );
