@@ -1,0 +1,37 @@
+button {
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.person {
+    max-width: 550px;
+    margin: 15px auto;
+    padding: 20px;
+    border: 1px solid aqua;
+    box-shadow: 0 3px 3px aquamarine;
+}
+
+.input {
+    border: 2px solid rgb(3, 156, 156);
+    border-style: groove;
+    border-radius: 3px;
+    padding: 3px 5px;
+    outline: none;
+    background-color: rgb(17, 175, 175);
+}
+
+.input:focus {
+    box-shadow: 0 0 5px aqua;
+}
+
+.text-t {
+    color: rgb(23, 192, 192);
+    font-size: 18px;
+    margin-top: 0;
+}
+
+@media (max-width: 700px) {
+    .card {
+        background-color: #ff0;
+    }
+}
