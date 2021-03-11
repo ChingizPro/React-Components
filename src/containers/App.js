@@ -39,7 +39,8 @@ class App extends Component {
       { id: 'cvbmn', name: 'Charles', age: 16 }
     ],
     otherState: 'Some other value',
-    personsVisible: true
+    personsVisible: true,
+    showCockpit: true
   }
 
   inputChangeHandler = (evt, id) => {
@@ -93,7 +94,10 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <Cockpit persons={this.state.persons} visible={this.state.personsVisible} resetPersons={this.resetPersons} togglePersons={this.togglePersons} />
+        <button onClick={() => { this.setState({ showCockpit: false }) }} style={{ backgroundColor: 'red', color: 'white', fontWeight: 'bold', fontSize: 18 }}>Remove Cockpit</button>
+        {
+          this.state.showCockpit ? <Cockpit persons={this.state.persons} visible={this.state.personsVisible} resetPersons={this.resetPersons} togglePersons={this.togglePersons} /> : null
+        }
         {persons}
       </div>
     );

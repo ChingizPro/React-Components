@@ -1,13 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import classes from './Cockpit.module.css';
 
 const Cockpit = props => {
-    // useEffect(() => { console.log('%c [Cockpit.js] useEffect()', 'color: #f0f; background-color: #000; padding: 3px 5px; border-radius: 3px;') });
-
     useEffect(() => {
         setTimeout(() => {
             alert('[Cockpit.js] useEffect()');
         }, 1000);
+
+        return () => { console.log('%c [Cockpit.js] cleaning process in useState()', 'color: #f00; background: #300; font-weight: bold; padding: 3px 5px; border-radius: 3px;') };
+    }, []);
+
+    useEffect(() => {
+        setTimeout(() => {
+            alert('[Cockpit.js] 2nd useEffect()');
+        }, 1000);
+
+        return () => { console.log('%c [Cockpit.js] 2nd cleaning process in useState()', 'color: #297; background: #010; font-weight: bold; padding: 3px 5px; border-radius: 3px;') };
     }, [props.persons]);
 
     console.log('%c [Cockpit.js] render()', 'color: #f0f; background-color: #000; padding: 3px 5px; border-radius: 3px;');
