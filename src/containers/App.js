@@ -4,6 +4,34 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('%c [App.js] constructor()', 'color: lime; background-color: #000; padding: 3px 5px; border-radius: 3px;');
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('%c [App.js] getDerivedStateFromProps()', 'color: lime; background-color: #000; padding: 3px 5px; border-radius: 3px;');
+    return null;
+  }
+
+  componentDidMount() {
+    console.log('%c [App.js] componentDidMount()', 'color: lime; background-color: #000; padding: 3px 5px; border-radius: 3px;');
+  }
+
+  shouldComponentUpdate() {
+    console.log('%c [App.js] shouldComponentUpdate()', 'color: lime; background-color: #000; padding: 3px 5px; border-radius: 3px;');
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('%c [App.js] getSnapshotBeforeUpdate()', 'color: lime; background-color: #000; padding: 3px 5px; border-radius: 3px;');
+    return null;
+  }
+
+  componentDidUpdate() {
+    console.log('%c [App.js] componentDidUpdate()', 'color: lime; background-color: #000; padding: 3px 5px; border-radius: 3px;');
+  }
+
   state = {
     persons: [
       { id: 'tyuio', name: 'John', age: 22 },
@@ -52,6 +80,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('%c [App.js] render()', 'color: lime; background-color: #000; padding: 3px 5px; border-radius: 3px;');
     let persons = null;
 
     if (this.state.personsVisible) {

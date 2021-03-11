@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
 import classes from './Cockpit.module.css';
 
 const Cockpit = props => {
+    // useEffect(() => { console.log('%c [Cockpit.js] useEffect()', 'color: #f0f; background-color: #000; padding: 3px 5px; border-radius: 3px;') });
+
+    useEffect(() => {
+        setTimeout(() => {
+            alert('[Cockpit.js] useEffect()');
+        }, 1000);
+    }, [props.persons]);
+
+    console.log('%c [Cockpit.js] render()', 'color: #f0f; background-color: #000; padding: 3px 5px; border-radius: 3px;');
     let textClasses = [];
 
     if (props.persons.length === 3) textClasses = [classes.bold, classes.triple];

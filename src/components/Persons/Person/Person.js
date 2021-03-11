@@ -8,6 +8,7 @@ let checkChildren = (theProps) => {
 }
 
 const person = (props) => {
+    console.log('%c [Person.js] render()', 'color: #0ff; background-color: #000; padding: 3px 5px; border-radius: 3px;');
     return (
         <div className={classes.person}>
             <p className={classes['text-t']} onClick={props.textClick}><i>I am {props.name} and I'm {props.age} years old!</i></p>
