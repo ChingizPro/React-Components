@@ -119,3 +119,5 @@ export default App;
 /* <Person name={this.state.persons[0].name} age={this.state.persons[0].age} onChange={this.inputChangeHandler} />
 <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.switchNameHandler.bind(this, 'Katy')} />
 <Person name={this.state.persons[2].name} age={this.state.persons[2].age} >My hobby: playing video games</Person> */
+
+// ? React.memo() Functional Component & Class-based {PureComponent} checks whether to render or not on every change
