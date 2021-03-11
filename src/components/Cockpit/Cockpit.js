@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import classes from './Cockpit.module.css';
 
 const Cockpit = props => {
@@ -10,20 +10,24 @@ const Cockpit = props => {
         return () => { console.log('%c [Cockpit.js] cleaning process in useState()', 'color: #f00; background: #300; font-weight: bold; padding: 3px 5px; border-radius: 3px;') };
     }, []);
 
-    useEffect(() => {
-        setTimeout(() => {
-            alert('[Cockpit.js] 2nd useEffect()');
-        }, 1000);
+    // ? check useState() for different cases
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         alert('[Cockpit.js] 2nd useEffect()');
+    //     }, 1000);
 
-        return () => { console.log('%c [Cockpit.js] 2nd cleaning process in useState()', 'color: #297; background: #010; font-weight: bold; padding: 3px 5px; border-radius: 3px;') };
-    }, [props.persons]);
+    //     return () => {
+    //         console.log('%c [Cockpit.js] 2nd cleaning process in useState()', 'color: #297; background: #010; font-weight: bold; padding: 3px 5px; border-radius: 3px;')
+    //         clearTimeout(timer);
+    //     };
+    // }, [props.persons]);
 
     console.log('%c [Cockpit.js] render()', 'color: #f0f; background-color: #000; padding: 3px 5px; border-radius: 3px;');
     let textClasses = [];
 
-    if (props.persons.length === 3) textClasses = [classes.bold, classes.triple];
-    else if (props.persons.length === 2) textClasses = [classes.bold, classes.italic, classes.double];
-    else if (props.persons.length === 1) textClasses = [classes.bold, classes.single];
+    if (props.personsLength === 3) textClasses = [classes.bold, classes.triple];
+    else if (props.personsLength === 2) textClasses = [classes.bold, classes.italic, classes.double];
+    else if (props.personsLength === 1) textClasses = [classes.bold, classes.single];
     else textClasses = [classes.text];
 
     let toggleClasses = [classes.toggler];
@@ -39,4 +43,4 @@ const Cockpit = props => {
     );
 }
 
-export default Cockpit;
+export default React.memo(Cockpit);

@@ -32,6 +32,10 @@ class App extends Component {
     console.log('%c [App.js] componentDidUpdate()', 'color: lime; background-color: #000; padding: 3px 5px; border-radius: 3px;');
   }
 
+  componentWillUnmount() {
+    console.log('%c [App.js] componentWillUnmount()', 'color: lime; background-color: #000; padding: 3px 5px; border-radius: 3px;');
+  }
+
   state = {
     persons: [
       { id: 'tyuio', name: 'John', age: 22 },
@@ -96,7 +100,7 @@ class App extends Component {
       <div className={classes.App}>
         <button onClick={() => { this.setState({ showCockpit: false }) }} style={{ backgroundColor: 'red', color: 'white', fontWeight: 'bold', fontSize: 18 }}>Remove Cockpit</button>
         {
-          this.state.showCockpit ? <Cockpit persons={this.state.persons} visible={this.state.personsVisible} resetPersons={this.resetPersons} togglePersons={this.togglePersons} /> : null
+          this.state.showCockpit ? <Cockpit personsLength={this.state.persons.length} visible={this.state.personsVisible} resetPersons={this.resetPersons} togglePersons={this.togglePersons} /> : null
         }
         {persons}
       </div>
