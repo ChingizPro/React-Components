@@ -46,5 +46,5 @@ const Cockpit = props => {
 
 export default React.memo(Cockpit);
 
-// * elments can also be rendered without adjacent wrapper as array elements 😮
+// * elements can also be rendered without adjacent wrapper as array elements 😮
 // * "<> children </>" can be used as wrapper 😮

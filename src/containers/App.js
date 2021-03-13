@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import classes from './App.module.css';
 import Persons from '../components/Persons/Persons';
-import Cockpit from "../components/Cockpit/Cockpit";
+import Cockpit from '../components/Cockpit/Cockpit';
+import WithClass from '../hoc/WithClass';
 
 class App extends Component {
   constructor(props) {
@@ -97,13 +98,13 @@ class App extends Component {
     }
 
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <button onClick={() => { this.setState({ showCockpit: false }) }} style={{ backgroundColor: 'red', color: 'white', fontWeight: 'bold', fontSize: 18 }}>Remove Cockpit</button>
         {
           this.state.showCockpit ? <Cockpit personsLength={this.state.persons.length} visible={this.state.personsVisible} resetPersons={this.resetPersons} togglePersons={this.togglePersons} /> : null
         }
         {persons}
-      </div>
+      </WithClass>
     );
   }
 }
