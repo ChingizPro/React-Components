@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import classes from './App.module.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import Wrapper from '../hoc/Wrapper';
+import WithWrapping from '../hoc/WithWrapping';
+// * import WithClass from '../hoc/WithClass';
 
 class App extends Component {
   constructor(props) {
@@ -98,13 +100,13 @@ class App extends Component {
     }
 
     return (
-      <WithClass classes={classes.App}>
+      <Wrapper>
         <button onClick={() => { this.setState({ showCockpit: false }) }} style={{ backgroundColor: 'red', color: 'white', fontWeight: 'bold', fontSize: 18 }}>Remove Cockpit</button>
         {
           this.state.showCockpit ? <Cockpit personsLength={this.state.persons.length} visible={this.state.personsVisible} resetPersons={this.resetPersons} togglePersons={this.togglePersons} /> : null
         }
         {persons}
-      </WithClass>
+      </Wrapper>
     );
   }
 }
@@ -114,7 +116,7 @@ class App extends Component {
 // ! useState state change replaces states
 // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'I am really a title!'));
 
-export default App;
+export default WithWrapping(App, classes.App);
 
 // ! previous version
 /* <Person name={this.state.persons[0].name} age={this.state.persons[0].age} onChange={this.inputChangeHandler} />
