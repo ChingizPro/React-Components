@@ -43,7 +43,7 @@ class App extends Component {
     persons: [
       { id: 'tyuio', name: 'John', age: 22 },
       { id: 'dfghj', name: 'Elizabeth', age: 18 },
-      { id: 'cvbmn', name: 'Charles', age: 16 }
+      { id: 'cvbmn', name: 'Charles', age: 16, ref: 'focusedInput' }
     ],
     otherState: 'Some other value',
     personsVisible: true,

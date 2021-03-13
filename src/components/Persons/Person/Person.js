@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './Person.module.css'
@@ -11,22 +11,33 @@ let checkChildren = (theProps) => {
     }
 }
 
-const person = (props) => {
-    console.log('%c [Person.js] render()', 'color: #0ff; background-color: #000; padding: 3px 5px; border-radius: 3px;');
-    return (
-        <Wrapper>
-            <p className={classes['text-t']} onClick={props.textClick}><i>I am {props.name} and I'm {props.age} years old!</i></p>
-            {checkChildren(props.children)}
-            <input className={classes.input} onChange={props.onChange} value={props.name} disabled={Boolean(!props.onChange)} />
-        </Wrapper>
-    );
+class Person extends Component {
+    componentDidMount() {
+        this.inputRef.focus();
+    }
+
+    render() {
+        console.log('%c [Person.js] render()', 'color: #0ff; background-color: #000; padding: 3px 5px; border-radius: 3px;');
+        return (
+            <Wrapper>
+                <p className={classes['text-t']} onClick={this.props.textClick}><i>I am {this.props.name} and I'm {this.props.age} years old!</i></p>
+                {checkChildren(this.props.children)}
+                <input
+                    className={classes.input}
+                    onChange={this.props.onChange}
+                    value={this.props.name}
+                    disabled={Boolean(!this.props.onChange)}
+                    ref={(inputRef) => { this.inputRef = inputRef }} />
+            </Wrapper>
+        );
+    }
 }
 
-person.propTypes = {
+Person.propTypes = {
     name: PropTypes.string,
     age: PropTypes.number,
     textClick: PropTypes.func,
     onChange: PropTypes.func
 }
 
-export default WithWrapping(person, classes.person);
+export default WithWrapping(Person, classes.person);
