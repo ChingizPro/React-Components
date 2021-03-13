@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.module.css';
 import Wrapper from '../../hoc/Wrapper';
 
 const Cockpit = props => {
+    let togglerRef = useRef(null);
+
     useEffect(() => {
-        setTimeout(() => {
-            alert('[Cockpit.js] useEffect()');
-        }, 1000);
+        // setTimeout(() => {
+        //     alert('[Cockpit.js] useEffect()');
+        // }, 1000);
+        togglerRef.current.click();
 
         return () => { console.log('%c [Cockpit.js] cleaning process in useState()', 'color: #f00; background: #300; font-weight: bold; padding: 3px 5px; border-radius: 3px;') };
     }, []);
@@ -39,7 +42,9 @@ const Cockpit = props => {
             <h1 key='el1' style={{ color: 'aqua' }}>A React App created with Components</h1>
             <p key='el2' className={textClasses.join(' ')} style={{ fontSize: 18 }}>Just some text, nothing more</p>
             <div key='el3' style={{ marginBottom: 10 }} onClick={props.resetPersons}><button className={classes.btn}>Reset</button></div>
-            <div key='el4'><button onClick={props.togglePersons} className={toggleClasses.join(' ')}>Toggle Persons</button></div>
+            <div key='el4'>
+                <button onClick={props.togglePersons} className={toggleClasses.join(' ')} ref={togglerRef}>Toggle Persons</button>
+            </div>
         </Wrapper>
     );
 }
