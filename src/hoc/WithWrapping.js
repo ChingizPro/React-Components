@@ -1,6 +1,6 @@
 const WithWrapping = (WrappedComponent, classes) => (
     props => (
-        <div className={classes}><WrappedComponent /></div>
+        <div className={classes}><WrappedComponent {...props} /></div>
     )
 );
 
