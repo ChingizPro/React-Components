@@ -12,9 +12,9 @@ let checkChildren = (theProps) => {
 }
 
 class Person extends Component {
-    componentDidMount() {
-        this.inputRef.focus();
-    }
+    // * componentDidMount() {
+    //     this.inputRef.focus();
+    // }
 
     render() {
         console.log('%c [Person.js] render()', 'color: #0ff; background-color: #000; padding: 3px 5px; border-radius: 3px;');
@@ -27,7 +27,7 @@ class Person extends Component {
                     onChange={this.props.onChange}
                     value={this.props.name}
                     disabled={Boolean(!this.props.onChange)}
-                    ref={(inputRef) => { this.inputRef = inputRef }} />
+                    ref={(inputEl) => inputEl.focus()} />
             </Wrapper>
         );
     }
