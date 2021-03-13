@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import classes from './Person.module.css'
 import Wrapper from '../../../hoc/Wrapper';
 import WithWrapping from '../../../hoc/WithWrapping';
@@ -18,6 +20,13 @@ const person = (props) => {
             <input className={classes.input} onChange={props.onChange} value={props.name} disabled={Boolean(!props.onChange)} />
         </Wrapper>
     );
+}
+
+person.propTypes = {
+    name: PropTypes.string,
+    age: PropTypes.number,
+    textClick: PropTypes.func,
+    onChange: PropTypes.func
 }
 
 export default WithWrapping(person, classes.person);
