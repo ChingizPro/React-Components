@@ -11,6 +11,21 @@ button {
     box-shadow: 0 3px 3px aquamarine;
 }
 
+.estate {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.auth {
+    color: rgb(0, 200, 0);
+}
+
+.notauth {
+    color: rgb(240, 0, 0);
+}
+
 .input {
     border: 2px solid rgb(3, 156, 156);
     border-style: groove;

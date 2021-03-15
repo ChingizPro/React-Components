@@ -16,7 +16,7 @@ class Persons extends PureComponent {
 
         return this.props.persons.map((person, index) => {
             return (
-                <Person key={person.id} textClick={(this.props.clicked.bind(this, index))} name={person.name} age={person.age} onChange={(evt) => { this.props.changed(evt, person.id) }} />
+                <Person key={person.id} isAuthenticated={this.props.isAuth} textClick={(this.props.clicked.bind(this, index))} name={person.name} age={person.age} onChange={(evt) => { this.props.changed(evt, person.id) }} />
             );
         });
 

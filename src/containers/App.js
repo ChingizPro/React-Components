@@ -46,8 +46,9 @@ class App extends Component {
       { id: 'cvbmn', name: 'Charles', age: 16, ref: 'focusedInput' }
     ],
     otherState: 'Some other value',
-    personsVisible: true,
-    showCockpit: true
+    personsVisible: false,
+    showCockpit: true,
+    isAuthenticated: false
   }
 
   inputChangeHandler = (evt, id) => {
@@ -87,6 +88,10 @@ class App extends Component {
     });
   }
 
+  handleAuthentication = () => {
+    this.setState({ isAuthenticated: true });
+  }
+
   render() {
     console.log('%c [App.js] render()', 'color: lime; background-color: #000; padding: 3px 5px; border-radius: 3px;');
     let persons = null;
@@ -94,7 +99,7 @@ class App extends Component {
     if (this.state.personsVisible) {
       persons = (
         <div>
-          <Persons persons={this.state.persons} clicked={this.deletePerson} changed={this.inputChangeHandler} />
+          <Persons persons={this.state.persons} isAuth={this.state.isAuthenticated} clicked={this.deletePerson} changed={this.inputChangeHandler} />
         </div>
       );
     }
@@ -102,6 +107,7 @@ class App extends Component {
     return (
       <Wrapper>
         <button onClick={() => { this.setState({ showCockpit: false }) }} style={{ backgroundColor: 'red', color: 'white', fontWeight: 'bold', fontSize: 18 }}>Remove Cockpit</button>
+        <button className={classes.loginBtn} onClick={this.handleAuthentication}>Log in</button>
         {
           this.state.showCockpit ? <Cockpit personsLength={this.state.persons.length} visible={this.state.personsVisible} resetPersons={this.resetPersons} togglePersons={this.togglePersons} /> : null
         }

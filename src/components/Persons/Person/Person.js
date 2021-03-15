@@ -23,9 +23,14 @@ class Person extends Component {
     }
 
     render() {
+        let loginClasses = [classes.estate];
+
+        { loginClasses.push(this.props.isAuthenticated ? classes.auth : classes.notauth) };
+
         console.log('%c [Person.js] render()', 'color: #0ff; background-color: #000; padding: 3px 5px; border-radius: 3px;');
         return (
             <Wrapper>
+                <p className={loginClasses.join(' ')}>{this.props.isAuthenticated ? 'Authenticated' : 'Please log in'}</p>
                 <p className={classes['text-t']} onClick={this.props.textClick}><i>I am {this.props.name} and I'm {this.props.age} years old!</i></p>
                 {checkChildren(this.props.children)}
                 <input
@@ -42,6 +47,7 @@ class Person extends Component {
 
 Person.propTypes = {
     name: PropTypes.string,
+    isAuth: PropTypes.bool,
     age: PropTypes.number,
     textClick: PropTypes.func,
     onChange: PropTypes.func
