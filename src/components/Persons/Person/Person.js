@@ -18,6 +18,8 @@ class Person extends Component {
         this.inputElRef = React.createRef();
     }
 
+    static contextType = AuthContext;  // ! this.context can be used in any place inside the class now
+
     componentDidMount() {
         // this.inputRef.focus();
         this.inputElRef.current.focus();
@@ -30,9 +32,12 @@ class Person extends Component {
         console.log('%c [Person.js] render()', 'color: #0ff; background-color: #000; padding: 3px 5px; border-radius: 3px;');
         return (
             <Wrapper>
-                <AuthContext.Consumer>
+                {/* <AuthContext.Consumer>
                     {(context) => <p className={loginClasses.join(' ')}>{context.isAuthenticated ? 'Authenticated' : 'Please log in'}</p>}
-                </AuthContext.Consumer>
+                </AuthContext.Consumer> */
+                    <p className={loginClasses.join(' ')}>{this.context.isAuthenticated ? 'Authenticated' : 'Please log in'}</p>
+                }
+
                 <p className={classes['text-t']} onClick={this.props.textClick}><i>I am {this.props.name} and I'm {this.props.age} years old!</i></p>
                 {checkChildren(this.props.children)}
                 <input
