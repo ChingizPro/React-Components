@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AuthContext from '../../../context/AuthContext';
 import PropTypes from 'prop-types';
 
 import classes from './Person.module.css'
@@ -29,7 +30,9 @@ class Person extends Component {
         console.log('%c [Person.js] render()', 'color: #0ff; background-color: #000; padding: 3px 5px; border-radius: 3px;');
         return (
             <Wrapper>
-                <p className={loginClasses.join(' ')}>{this.props.isAuthenticated ? 'Authenticated' : 'Please log in'}</p>
+                <AuthContext.Consumer>
+                    {(context) => <p className={loginClasses.join(' ')}>{context.isAuthenticated ? 'Authenticated' : 'Please log in'}</p>}
+                </AuthContext.Consumer>
                 <p className={classes['text-t']} onClick={this.props.textClick}><i>I am {this.props.name} and I'm {this.props.age} years old!</i></p>
                 {checkChildren(this.props.children)}
                 <input

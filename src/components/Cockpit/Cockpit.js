@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import AuthContext from '../../context/AuthContext';
+
 import classes from './Cockpit.module.css';
 import Wrapper from '../../hoc/Wrapper';
 
@@ -45,6 +47,9 @@ const Cockpit = props => {
             <div key='el4'>
                 <button onClick={props.togglePersons} className={toggleClasses.join(' ')} ref={togglerRef}>Toggle Persons</button>
             </div>
+            <AuthContext.Consumer>
+                {(context) => <button className={classes.loginBtn} onClick={context.handleAuthentication}>Log in</button>}
+            </AuthContext.Consumer>
         </Wrapper>
     );
 }

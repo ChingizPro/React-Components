@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import AuthContext from '../context/AuthContext';
+
 import classes from './App.module.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
@@ -107,11 +109,12 @@ class App extends Component {
     return (
       <Wrapper>
         <button onClick={() => { this.setState({ showCockpit: false }) }} style={{ backgroundColor: 'red', color: 'white', fontWeight: 'bold', fontSize: 18 }}>Remove Cockpit</button>
-        <button className={classes.loginBtn} onClick={this.handleAuthentication}>Log in</button>
-        {
-          this.state.showCockpit ? <Cockpit personsLength={this.state.persons.length} visible={this.state.personsVisible} resetPersons={this.resetPersons} togglePersons={this.togglePersons} /> : null
-        }
-        {persons}
+        <AuthContext.Provider value={{ isAuthenticated: this.state.isAuthenticated, handleAuthentication: this.handleAuthentication }}>
+          {
+            this.state.showCockpit ? <Cockpit personsLength={this.state.persons.length} visible={this.state.personsVisible} resetPersons={this.resetPersons} togglePersons={this.togglePersons} /> : null
+          }
+          {persons}
+        </AuthContext.Provider>
       </Wrapper>
     );
   }
