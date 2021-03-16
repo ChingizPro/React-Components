@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 
 import classes from './Cockpit.module.css';
 import Wrapper from '../../hoc/Wrapper';
 
 const Cockpit = props => {
+    const authContext = useContext(AuthContext);
     let togglerRef = useRef(null);
 
     useEffect(() => {
@@ -47,9 +48,11 @@ const Cockpit = props => {
             <div key='el4'>
                 <button onClick={props.togglePersons} className={toggleClasses.join(' ')} ref={togglerRef}>Toggle Persons</button>
             </div>
-            <AuthContext.Consumer>
+            {/* <AuthContext.Consumer>
                 {(context) => <button className={classes.loginBtn} onClick={context.handleAuthentication}>Log in</button>}
-            </AuthContext.Consumer>
+            </AuthContext.Consumer> */
+                <button className={classes.loginBtn} onClick={authContext.handleAuthentication}>Log in</button>
+            }
         </Wrapper>
     );
 }

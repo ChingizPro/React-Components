@@ -18,7 +18,8 @@ class Person extends Component {
         this.inputElRef = React.createRef();
     }
 
-    static contextType = AuthContext;  // ! this.context can be used in any place inside the class now
+    static contextType = AuthContext; // * this.context can be used in any place inside the class now
+    // ! contextType is a required name
 
     componentDidMount() {
         // this.inputRef.focus();
