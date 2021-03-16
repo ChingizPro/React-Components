@@ -24,8 +24,7 @@ class Person extends Component {
 
     render() {
         let loginClasses = [classes.estate];
-
-        { loginClasses.push(this.props.isAuthenticated ? classes.auth : classes.notauth) };
+        loginClasses.push(this.props.isAuthenticated ? classes.auth : classes.notauth);
 
         console.log('%c [Person.js] render()', 'color: #0ff; background-color: #000; padding: 3px 5px; border-radius: 3px;');
         return (
